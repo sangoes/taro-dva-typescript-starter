@@ -1,7 +1,7 @@
 import Taro, { Component, Config } from "@tarojs/taro";
 import Index from "./pages/index/index";
 import { dva } from "./utils/dva";
-import { Provider } from "@tarojs/redux";
+import { Provider } from "react-redux";
 import * as models from "./models";
 import "./app.less";
 

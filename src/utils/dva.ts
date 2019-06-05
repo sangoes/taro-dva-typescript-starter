@@ -1,7 +1,5 @@
-import { Provider } from "@tarojs/redux";
 import { Reducer, Action, ReducersMapObject, Dispatch } from "redux";
 import createLoading from "dva-loading";
-import { createLogger } from "redux-logger";
 let { create } = require("dva-core");
 
 export interface EffectsCommandMap {
@@ -69,19 +67,13 @@ export interface Options {
  */
 export function dva(options: Options) {
   const app = create(options);
-  // if (process.env.NODE_ENV === "development") {
-  //   options.onAction = [createLogger()];
-  // }
   app.use(createLoading());
   // HMR workaround
-  // if (!global.registered)
-  options.models.forEach((model: Model) => app.model(model));
-  // global.registered = true;
+  if (!global.registered)
+    options.models.forEach((model: Model) => app.model(model));
+  global.registered = true;
   app.start();
   const store = app._store;
-  // app.start = (container: any) => () => (
-  //   <Provider store={store}>{container}</Provider>
-  // );
   app.getStore = () => store;
   return app;
 }

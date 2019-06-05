@@ -1,9 +1,7 @@
 import Taro, { Component, Config } from "@tarojs/taro";
 import { View, Text } from "@tarojs/components";
-import { connect } from "@tarojs/redux";
 import "./index.less";
 
-@connect(({ app, loading }) => ({ ...app, loading }))
 export default class Index extends Component {
   /**
    * 指定config的类型声明为: Taro.Config
