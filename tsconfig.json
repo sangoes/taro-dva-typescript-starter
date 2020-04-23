@@ -18,10 +18,20 @@
     "jsx": "preserve",
     "jsxFactory": "Taro.createElement",
     "allowJs": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "global.d.ts"
-    ]
+    "resolveJsonModule": true,
+    "typeRoots": ["node_modules/@types", "global.d.ts"],
+    "paths": {
+      "@/utils/*": ["./src/utils/*"],
+      "@/actions/*": ["./src/actions/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/constants/*": ["./src/constants/*"],
+      "@/interface/*": ["./src/interface/*"],
+      "@/models/*": ["./src/models/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/styles/*": ["./src/styles/*"]
+    }
   },
+  "exclude": ["node_modules", "dist"],
   "compileOnSave": false
 }

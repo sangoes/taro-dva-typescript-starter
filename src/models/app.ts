@@ -1,17 +1,29 @@
-import { Model } from "../utils/dva";
-import { AppState } from "./states/app";
-import modelExtend from "dva-model-extend";
-import { model } from "../utils/model";
+import { IAppState } from '@/interface/app';
+import { Model } from '@/utils/dva';
 
 /**
  * app
  */
-export default modelExtend(model, {
-  namespace: "app",
+const NAMESPACE = 'app';
+export default {
+  namespace: NAMESPACE,
   state: {
-    appStatus: true
-  } as AppState,
-  reducers: {},
+    loading: false,
+  } as IAppState,
   effects: {},
-  subscriptions: {}
-} as Model);
+  reducers: {
+    save(state, payload) {
+      return {
+        ...state,
+        ...payload,
+      };
+    },
+    error(state, payload) {
+      return {
+        ...state,
+        error: payload,
+      };
+    },
+  },
+  subscriptions: {},
+} as Model;

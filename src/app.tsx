@@ -1,21 +1,17 @@
-import Taro, { Component, Config } from "@tarojs/taro";
-import Index from "./pages/index/index";
-import { dva } from "./utils/dva";
-import { Provider } from "react-redux";
-import * as models from "./models";
-import "./app.less";
+import Taro, { Component, Config } from '@tarojs/taro';
+import Index from '@/pages/index';
+import { dva } from '@/utils/dva';
+import './app.less';
+import { Provider } from '@tarojs/redux';
 
-/**
- * dva
- */
 const app = dva({
   initialState: {},
-  models: Object.values(models),
+  models: Object.values([]),
   extraReducers: {},
   onError(e: any) {
-    console.error("onError", e);
+    console.error('onError', e);
   },
-  onAction: []
+  onAction: [],
 });
 
 const store = app.getStore();
@@ -27,6 +23,14 @@ const store = app.getStore();
 // }
 
 class App extends Component {
+  public componentDidMount() {}
+
+  public componentDidShow() {}
+
+  public componentDidHide() {}
+
+  public componentDidCatchError() {}
+
   /**
    * 指定config的类型声明为: Taro.Config
    *
@@ -35,26 +39,18 @@ class App extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    pages: ["pages/index/index"],
+    pages: ['pages/index/index'],
     window: {
-      backgroundTextStyle: "light",
-      navigationBarBackgroundColor: "#fff",
-      navigationBarTitleText: "WeChat",
-      navigationBarTextStyle: "black"
-    }
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black',
+    },
   };
-
-  componentDidMount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
-
-  componentDidCatchError() {}
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render() {
+  public render() {
     return (
       <Provider store={store}>
         <Index />
@@ -63,4 +59,4 @@ class App extends Component {
   }
 }
 
-Taro.render(<App />, document.getElementById("app"));
+Taro.render(<App />, document.getElementById('app'));

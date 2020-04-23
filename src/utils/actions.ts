@@ -5,18 +5,20 @@
  * 统一处理action
  * @param type
  */
-export const createAction = (type: any) => (payload: any) => ({
+export const createAction = (type: any) => (payload?: any) => ({
   type,
-  payload
+  payload,
 });
 
 /**
  * 统一处理action
  * @param {*} type
  */
-export const createActions = (type: any) => (payload: any) => (
-  callback: any
-) => ({ type, payload, callback });
+export const createActions = (type: any) => (payload?: any) => (callback: any) => ({
+  type,
+  payload,
+  callback,
+});
 
 /**
  * 网络检查

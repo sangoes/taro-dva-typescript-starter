@@ -1,15 +1,16 @@
 {
 	"miniprogramRoot": "dist/",
-	"projectname": "taro-dva-typescript-starter",
-	"description": "taro dva typescript starter",
+	"projectname": "taroStarter",
+	"description": "taro starter",
 	"appid": "touristappid",
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
 		"postcss": false,
-		"minified": false,
-		"newFeature": true
+		"minified": false
 	},
 	"compileType": "miniprogram",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {}
 }
